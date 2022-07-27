@@ -12,32 +12,32 @@ public class Game {
     let numberOfPlayer = 2
 
     func startGame () {
-        print (PrintText.askNamePlayer.rawValue  )
         newPlayer1.setName ()
-        print (PrintText.askNamePlayer.rawValue  )
         newPlayer2.setName ()
-        terminal.clearScreen()
-        self.setTeam()
+        self.setTeam1()
+        self.setTeam2()
     }
     
-    func setTeam () {
-        print("\(newPlayer1.playerName), \(PrintText.selectHero.rawValue) ")
-        terminal.pressAKeyToContinue()
-        terminal.clearScreen()
-        print (PrintText.presentCharacter.rawValue)
+    func setTeam1 () {
+        print("\(newPlayer1.playerName), \(printText.selectHero) ")
+        print (printText.presentCharacter)
         team1.addAcharacterToMyTeam()
-        terminal.clearScreen()
-        
-        print("\(newPlayer2.playerName), \(PrintText.selectHero.rawValue) ")
-        terminal.pressAKeyToContinue()
-        terminal.clearScreen()
-        print (PrintText.presentCharacter.rawValue)
+    }
+    func setTeam2 () {
+        print("\(newPlayer2.playerName), \(printText.selectHero) ")
+        print (printText.presentCharacter)
         team2.addAcharacterToMyTeam()
-        terminal.clearScreen()
     }
     
-    // 😁 a dev
-    func showStatBeforeFight () {}
+    // 😁 a develpper
+    func showStatBeforeFight () {
+        terminal.clearTerminal()
+        print(printText.reviewTheTeamg)
+        print(newPlayer1.playerName)
+        print(team1.printMyTeam())
+        print(newPlayer2.playerName)
+        print(team2.printMyTeam())
+    }
     // 😁 a dev
     //      tant qu'un joueur est pas mort
     //           alors on alterne joueur
@@ -49,8 +49,7 @@ public class Game {
     func showWinner () { }
     
     init (player1: Player, player2 :Player){
-        terminal.clearScreen()
-        print (PrintText.welcome.rawValue  )
+        print (printText.welcome  )
     }
 }
 

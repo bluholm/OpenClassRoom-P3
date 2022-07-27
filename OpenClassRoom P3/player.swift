@@ -11,9 +11,11 @@ class Player {
     let numberMaxOfHerosPerTeam = 3
     
     func setName () {
+        print (printText.askNamePlayer  )
             if let name = readLine(strippingNewline: true) {
                 self.playerName = name
             }
+        terminal.clearTerminal()
     }
     
     func attackACharacter () {}

@@ -7,6 +7,8 @@
 
 
 
+terminal.clearTerminal()
+
 newGame.startGame()
 newGame.showStatBeforeFight()
 newGame.startBattle()

@@ -6,8 +6,10 @@
 //
 
 class ViewTerminal {
-    func clearScreen () {
-        print("\u{001B}[2J")
+    func clearTerminal () {
+        for _ in 0...50{
+            print("\n")
+        }
     }
     
     func pressAKeyToContinue () {
