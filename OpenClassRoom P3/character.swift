@@ -6,10 +6,10 @@
 
 
 class TypeOfCharacter {
-    var characterType: String = ""
-    var characterMaxLifePoints: Int = 0
-    var characterHeal: Bool = false
-    var characterWeapon: String = ""
+    var characterType: String
+    var characterMaxLifePoints: Int
+    var characterHeal: Bool
+    var characterWeapon: String
     
     init(characterType: String, characterMaxLifePoints: Int, characterHeal: Bool,characterWeapon: String){
         self.characterType = characterType
@@ -19,7 +19,3 @@ class TypeOfCharacter {
     }
 }
 
-// a deplacer dans les class de chaque type 
-var warrior = TypeOfCharacter(characterType: "warrior", characterMaxLifePoints: 150, characterHeal: false,characterWeapon: "sword")
-var magus = TypeOfCharacter(characterType: "magus", characterMaxLifePoints: 70, characterHeal: true,characterWeapon: "wand")
-var dwarf = TypeOfCharacter(characterType: "dwarf", characterMaxLifePoints: 100, characterHeal: false,characterWeapon: "axe")
