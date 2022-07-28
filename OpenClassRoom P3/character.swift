@@ -19,7 +19,7 @@ class TypeOfCharacter {
     }
 }
 
-// a deplacer dans les class de chaque type ! 
+// a deplacer dans les class de chaque type 
 var warrior = TypeOfCharacter(characterType: "warrior", characterMaxLifePoints: 150, characterHeal: false,characterWeapon: "sword")
 var magus = TypeOfCharacter(characterType: "magus", characterMaxLifePoints: 70, characterHeal: true,characterWeapon: "wand")
 var dwarf = TypeOfCharacter(characterType: "dwarf", characterMaxLifePoints: 100, characterHeal: false,characterWeapon: "axe")
