@@ -19,7 +19,21 @@ class Player {
     }
     
     func attackACharacter () {}
-    func isDead () {}
+    
+    func isNotDead () -> Bool {
+        var sumLifePoints: Int = 0
+        for i in 0...2 {
+            sumLifePoints += team1.playerTeamLife[i]
+        }
+        if sumLifePoints != 0 {
+            return false
+        } else {
+            return true
+        }
+       
+        
+        
+    }
     init (){}
 }
 

@@ -29,27 +29,37 @@ public class Game {
         team2.addAcharacterToMyTeam()
     }
     
-    // 😁 a develpper
     func showStatBeforeFight () {
         terminal.clearTerminal()
-        print(printText.reviewTheTeamg)
+        print(printText.reviewTheTeam)
         print(newPlayer1.playerName)
         print(team1.printMyTeam())
         print(newPlayer2.playerName)
         print(team2.printMyTeam())
     }
+
+    func startBattle () {
+        var firstPlayer: Int = 1
+        while newPlayer1.isNotDead() || newPlayer2.isNotDead(){
+            if firstPlayer == 1 {
+                firstPlayer = 2
+                newPlayer1.attackACharacter()
+            } else {
+                firstPlayer = 1
+                newPlayer2.attackACharacter()
+            }
+        }
+    }
     // 😁 a dev
-    //      tant qu'un joueur est pas mort
-    //           alors on alterne joueur
-    //           Joueur choisi son heros
-    //           Joueur choisi sa cible
-    //           On applique les sortilege.
-    func startBattle () {}
-    // 😁 a dev
+    // meilleur cou porté !
+    // meilleur soin porté
+    // les survivants
+    // le premier mort
+    // nombre de tours
     func showWinner () { }
     
-    init (player1: Player, player2 :Player){
-        print (printText.welcome  )
+    init (player1: Player, player2: Player){
+        print (printText.welcome)
     }
 }
 

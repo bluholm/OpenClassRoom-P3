@@ -13,11 +13,12 @@ class Team {
     let numberMaxOfHerosPerTeam = 3
     
     func checkNameCharacter () {
+        print("Please Enter a name for your Hero ?")
         var isNameUnique = true
         while isNameUnique == true {
             if let Pname = readLine() {
-                if team1.playerTeamName.contains(Pname) || team2.playerTeamName.contains(Pname) {
-                    print("name already exist please change")
+                if team1.playerTeamName.contains(Pname) || team2.playerTeamName.contains(Pname) || Pname == "" {
+                    print("name already exist or is empty  : please change ")
                 } else {
                     charactereName = Pname
                     playerTeamName.append(charactereName)
@@ -25,46 +26,51 @@ class Team {
                 }
             }
         }
-        
     }
     
-    func addAcharacterToMyTeam () {
-        for i in 1...self.numberMaxOfHerosPerTeam {
-            print("What is the name of your heros number \(i) ?")
-            
-            self.checkNameCharacter()
-            
-            print("what is the type of \(charactereName) ? (1 ; 2 or 3) ")
-            if let choice = readLine() {
-                switch Int(choice) {
-                case 1:
-                    playerTeamType.append(warrior.characterType)
-                    playerTeamLife.append(warrior.characterMaxLifePoints)
-                case 2:
-                    playerTeamType.append(magus.characterType)
-                    playerTeamLife.append(magus.characterMaxLifePoints)
-                case 3:
-                    playerTeamType.append(dwarf.characterType)
-                    playerTeamLife.append(dwarf.characterMaxLifePoints)
-                default:
-                    print (printText.defaultChooseCharacter  )
-                    //😁 randomisation a faire avec un switch peut etre  ?!
-                    playerTeamType.append(warrior.characterType)
-                    playerTeamLife.append(warrior.characterMaxLifePoints)
-                }
+    func appendAcharacterToMyTeam (){
+        print("what is the type of \(charactereName) ? (1 ; 2 or 3) ")
+        if let choice = readLine() {
+            switch Int(choice) {
+            case 1:
+                playerTeamType.append(warrior.characterType)
+                playerTeamLife.append(warrior.characterMaxLifePoints)
+            case 2:
+                playerTeamType.append(magus.characterType)
+                playerTeamLife.append(magus.characterMaxLifePoints)
+            case 3:
+                playerTeamType.append(dwarf.characterType)
+                playerTeamLife.append(dwarf.characterMaxLifePoints)
+            default:
+                print (printText.defaultChooseCharacter  )
+                //😁 randomisation a faire avec un switch peut etre  ?!
+                playerTeamType.append(warrior.characterType)
+                playerTeamLife.append(warrior.characterMaxLifePoints)
             }
         }
     }
-
+    
+    func addAcharacterToMyTeam () {
+        for _ in 1...self.numberMaxOfHerosPerTeam {
+            self.checkNameCharacter()
+            self.appendAcharacterToMyTeam()            
+            }
+        }
+    
     func printMyTeam () -> String {
         var myTeam: String = ""
-        print(playerTeamName)
-        print(playerTeamLife)
-        print(playerTeamType)
-        
+        for i in 0..<3 {
+            myTeam += "[\(i+1)] "
+            myTeam += playerTeamName[i]
+            myTeam += " the \(playerTeamType[i])"
+            myTeam += "(\(playerTeamLife[i]) / \(playerTeamLife[i]))"
+            myTeam += "\n"
+        }
+        myTeam += "\n"
         return myTeam
     }
 }
 
 var team1 = Team()
 var team2 = Team()
+
