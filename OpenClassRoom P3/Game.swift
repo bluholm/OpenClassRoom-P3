@@ -36,21 +36,23 @@ public class Game {
         print(team1.printMyTeam())
         print(newPlayer2.playerName)
         print(team2.printMyTeam())
+        terminal.pressAKeyToContinue()
     }
 
     func startBattle () {
         var firstPlayer: Int = 1
-        while newPlayer1.isNotDead() || newPlayer2.isNotDead(){
+        print("\(newPlayer1.isNotDead())")
+        while !newPlayer1.isNotDead() || !newPlayer2.isNotDead(){
             if firstPlayer == 1 {
                 firstPlayer = 2
-                newPlayer1.attackACharacter()
+                team1.team1AttackACharacter()
             } else {
                 firstPlayer = 1
-                newPlayer2.attackACharacter()
+                team2.team2AttackACharacter()
             }
         }
     }
-    // 😁 a dev
+    // 😁 a dev showWinner
     // meilleur cou porté !
     // meilleur soin porté
     // les survivants

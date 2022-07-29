@@ -18,4 +18,3 @@ class TypeOfCharacter {
         self.characterWeapon = characterWeapon
     }
 }
-

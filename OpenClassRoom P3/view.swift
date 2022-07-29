@@ -13,8 +13,8 @@ class ViewTerminal {
     }
     
     func pressAKeyToContinue () {
+        print(printText.pressAkeyToContinue)
         if let _ = readLine() {
-            print ("press a key to continue ")
         }
     }
     

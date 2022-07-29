@@ -43,9 +43,21 @@ class Team {
                 playerTeamLife.append(dwarf.characterMaxLifePoints)
             default:
                 print (printText.defaultChooseCharacter  )
-                //😁 randomisation a faire avec un switch peut etre  ?!
-                playerTeamType.append(warrior.characterType)
-                playerTeamLife.append(warrior.characterMaxLifePoints)
+                terminal.pressAKeyToContinue()
+                let random = Int.random(in: 1...3)
+                switch random {
+                    case 1:
+                        playerTeamType.append(warrior.characterType)
+                        playerTeamLife.append(warrior.characterMaxLifePoints)
+                    case 2:
+                        playerTeamType.append(magus.characterType)
+                        playerTeamLife.append(magus.characterMaxLifePoints)
+                    case 3:
+                        playerTeamType.append(dwarf.characterType)
+                        playerTeamLife.append(dwarf.characterMaxLifePoints)
+                    default:
+                        break
+                }
             }
         }
     }
@@ -56,7 +68,7 @@ class Team {
             self.appendAcharacterToMyTeam()            
             }
         }
-    
+    // 😁 a dev attackACharacter
     func printMyTeam () -> String {
         var myTeam: String = ""
         for i in 0..<3 {
@@ -69,6 +81,34 @@ class Team {
         myTeam += "\n"
         return myTeam
     }
+    
+    // 😁 a dev attackACharacter
+    func team1AttackACharacter () {
+        terminal.clearTerminal()
+        print("\(newPlayer1.playerName) select an attacker")
+        print(team1.printMyTeam())
+        if let attacker = readLine() {
+            print("\(attacker)")
+        }
+    }
+    // 😁 a dev attackACharacter
+    func team2AttackACharacter () {
+        terminal.clearTerminal()
+        print("\(newPlayer2.playerName) select an attacker")
+        print(team2.printMyTeam())
+        if let attacker = readLine() {
+            print("\(attacker)")
+        }
+    }
+        
+        //select a character parmis les vivants
+        //soin ou attaque ?
+        //liste targets
+            //liste ceux que tu peux attaquer
+            //liste ceux que tu peux soigner
+        //appliquer le soin ou l'attaque
+        
+    
 }
 
 var team1 = Team()
