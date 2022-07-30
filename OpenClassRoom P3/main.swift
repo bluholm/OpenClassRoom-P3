@@ -9,7 +9,12 @@
 
 terminal.clearTerminal()
 
-newGame.startGame()
+if newGame.debugMod == true {
+    deboogageInProgess.debugSetTeams()
+} else {
+    newGame.startGame()
+}
+
 newGame.showStatBeforeFight()
 newGame.startBattle()
 newGame.showWinner()

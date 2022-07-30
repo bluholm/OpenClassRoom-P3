@@ -6,34 +6,7 @@
 //
 
 class Player {
-    var playerName: String = "NoName"
-    let numberMaxOfHerosPerTeam = 3
-    
-    
-    func setName () {
-        print (printText.askNamePlayer  )
-            if let name = readLine(strippingNewline: true) {
-                self.playerName = name
-            }
-        terminal.clearTerminal()
-    }
-        
-    
-    //😁 issue a corriger ! team1 ! il faut que cela marche pour les 2 teams !
-    func isNotDead () -> Bool {
-        var sumLifePoints: Int = 0
-        for i in 0...2 {
-            sumLifePoints += team1.playerTeamLife[i]
-        }
-        if sumLifePoints != 0 {
-            return false
-        } else {
-            return true
-        }
-       
-        
-        
-    }
+
     init() {}
 }
 

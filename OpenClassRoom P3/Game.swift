@@ -7,48 +7,51 @@
 
 public class Game {
     var isGameDone = false
+    var debugMod = true
     var winner : String = ""
     let numberOfTurns =  0
     let numberOfPlayer = 2
+    
 
     func startGame () {
-        newPlayer1.setName ()
-        newPlayer2.setName ()
+        team1.setName ()
+        team2.setName ()
         self.setTeam1()
         self.setTeam2()
     }
     
     func setTeam1 () {
-        print("\(newPlayer1.playerName), \(printText.selectHero) ")
+        print("\(team1.playerName), \(printText.selectHero) ")
         print (printText.presentCharacter)
         team1.addAcharacterToMyTeam()
     }
+    
     func setTeam2 () {
-        print("\(newPlayer2.playerName), \(printText.selectHero) ")
-        print (printText.presentCharacter)
+        print("\(team2.playerName), \(printText.selectHero) ")
+        print(printText.presentCharacter)
         team2.addAcharacterToMyTeam()
     }
     
     func showStatBeforeFight () {
         terminal.clearTerminal()
         print(printText.reviewTheTeam)
-        print(newPlayer1.playerName)
+        print(team1.playerName)
         print(team1.printMyTeam())
-        print(newPlayer2.playerName)
+        print(team2.playerName)
         print(team2.printMyTeam())
         terminal.pressAKeyToContinue()
     }
 
     func startBattle () {
         var firstPlayer: Int = 1
-        print("\(newPlayer1.isNotDead())")
-        while !newPlayer1.isNotDead() || !newPlayer2.isNotDead(){
+        print("\(team1.isNotDead())")
+        while !team1.isNotDead() || !team2.isNotDead(){
             if firstPlayer == 1 {
                 firstPlayer = 2
                 team1.team1AttackACharacter()
             } else {
                 firstPlayer = 1
-                team2.team2AttackACharacter()
+                //team2.team2AttackACharacter()
             }
         }
     }
@@ -60,9 +63,9 @@ public class Game {
     // nombre de tours
     func showWinner () { }
     
-    init (player1: Player, player2: Player){
+    init (){
         print (printText.welcome)
     }
 }
 
-var newGame = Game(player1: newPlayer1, player2: newPlayer2)
+var newGame = Game()
