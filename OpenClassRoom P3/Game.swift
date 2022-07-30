@@ -43,15 +43,14 @@ public class Game {
     }
 
     func startBattle () {
-        var firstPlayer: Int = 1
-        print("\(team1.isNotDead())")
+        var nextPlayer: Int = 1
         while !team1.isNotDead() || !team2.isNotDead(){
-            if firstPlayer == 1 {
-                firstPlayer = 2
-                team1.team1AttackACharacter()
+            if nextPlayer == 1 {
+                nextPlayer = 2
+                team1.teamAttackACharacter()
             } else {
-                firstPlayer = 1
-                //team2.team2AttackACharacter()
+                nextPlayer = 1
+                team2.teamAttackACharacter()
             }
         }
     }

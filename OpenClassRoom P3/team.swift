@@ -27,11 +27,11 @@ class Team {
         
     
     
-    
+    //😁fonctionne que pour team1 !!
     func isNotDead () -> Bool {
         var sumLifePoints: Int = 0
-        for i in 0...2 {
-            sumLifePoints += team1.playerTeamLife[i]
+        for i in 0...playerTeamName.count-1 {
+            sumLifePoints += playerTeamLife[i]
         }
         if sumLifePoints != 0 {
             return false
@@ -115,73 +115,48 @@ class Team {
     
     
     
-    func printMyTeam () -> String {
+    func printMyTeam () {
         var myTeam: String = ""
         for i in 0..<playerTeamName.count {
+            if playerTeamLife[i] > 0 {
                 myTeam += "[\(i+1)] "
                 myTeam += playerTeamName[i]
                 myTeam += " the \(playerTeamType[i])"
                 myTeam += "  (\(playerTeamLife[i]) PV)"
                 myTeam += "\n"
+                }
         }
         myTeam += "\n"
-        return myTeam
+        print("\(myTeam)")
     }
     
     
-    
-    // 😁 a dev attackACharacter trop de ligne donc a decouper pour meilleure lsiiblté
-    func team1AttackACharacter () {
-        terminal.clearTerminal()
-       
-            print("\(team1.playerName) select an attacker")
-            print(team1.printMyTeam())
+    func teamselectAnAttacker () -> Int {
+        var attacker = 0
+        let rangeCharactereStillAlive = 1...playerTeamName.count
+        self.printMyTeam()
+        var KeepGoing = true
         
-        //choice of the Charactere between the one still alive !!
-        var choiceAttackerAlternate: Int = 0
-        let rangeCharactereStillAlive = 0..<team1.playerTeamName.count
-        while choiceAttackerAlternate == 0 {
-            if let attacker = readLine() {
-                if rangeCharactereStillAlive.contains(Int(attacker)!) {
-                    choiceAttackerAlternate = 1
-                    if (playerTeamHeal[Int(attacker)!] == true){
-                        //😁 veut tu soigner ?!
-                        print("would you like to heal ?! ")
-                    }
-                    //choose target
-                    print("Choose a target : ")
-                    print(team2.printMyTeam())
-                    var choiceTargetAlternate: Int = 0
-                    //😁 indiquer opponent team !
-                    let rangeTargetStillAlive = 0..<team2.playerTeamName.count
-                    while choiceTargetAlternate == 0 {
-                        if let target = readLine() {
-                            if rangeTargetStillAlive.contains(Int(target)!) {
-                                choiceTargetAlternate = 1
-                            }else{
-                                choiceTargetAlternate = 0
-                            }
-                        }
-                    }
-                    
-                    
-                }else {
-                    print("wrong choice")
-                    choiceAttackerAlternate = 0
+        while KeepGoing == true {
+            print("J1: Fait un choix :")
+            if let choice = readLine(){
+                if choice != "" && rangeCharactereStillAlive.contains(Int(choice)!){
+                        attacker = Int(choice)!
+                        KeepGoing = false
                 }
             }
         }
-        //check the target available ( including thoses who can be heal )
-        
-        
+        return attacker
     }
-        
-       
-        //liste targets
-            //liste ceux que tu peux attaquer
-            //liste ceux que tu peux soigner
-        //appliquer le soin ou l'attaque
-      
+    
+    
+    // 😁 a dev attackACharacter trop de ligne donc a decouper pour meilleure lsiiblté
+    func teamAttackACharacter () {
+        terminal.clearTerminal()
+        var teamAttacker = teamselectAnAttacker()
+    }
+    
+    
     init(){
         
     }
