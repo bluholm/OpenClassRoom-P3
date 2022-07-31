@@ -36,25 +36,32 @@ public class Game {
         terminal.clearTerminal()
         print(printText.reviewTheTeam)
         print(team1.playerName)
-        print(team1.printMyTeam())
+        team1.printMyTeam()
         print(team2.playerName)
-        print(team2.printMyTeam())
+        team2.printMyTeam()
         terminal.pressAKeyToContinue()
     }
 
     func startBattle () {
         var nextPlayer: Int = 1
-        while !team1.isNotDead() || !team2.isNotDead(){
-            if nextPlayer == 1 {
+        terminal.clearTerminal()
+        print(printText.fightBegin)
+        while team1.isDead() == false && team2.isDead() == false {
+            
+            
+            
+            if nextPlayer == 1 && !team1.isDead() {
                 nextPlayer = 2
+                print(" \(team1.playerName) it is your time to Attack !")
                 team1.teamAttackACharacter()
             } else {
                 nextPlayer = 1
+                print(" \(team2.playerName) it is your time to Attack !")
                 team2.teamAttackACharacter()
             }
         }
     }
-    // 😁 a dev showWinner
+    // 📌 a dev showWinner
     // meilleur cou porté !
     // meilleur soin porté
     // les survivants

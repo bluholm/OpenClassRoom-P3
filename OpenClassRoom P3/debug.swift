@@ -29,11 +29,11 @@ class Debug {
         team1.playerTeamLife.append(magus.characterMaxLifePoints)
         team1.playerTeamHeal.append(magus.characterHeal)
     
-        /*team1.playerTeamName.append("Albert")
+        team1.playerTeamName.append("Albert")
         team1.playerTeamType.append(dwarf.characterType)
         team1.playerTeamLife.append(dwarf.characterMaxLifePoints)
-        //team1.playerTeamLife.append(0)
-        team1.playerTeamHeal.append(dwarf.characterHeal)*/
+        team1.playerTeamLife.append(0)
+        team1.playerTeamHeal.append(dwarf.characterHeal)
         
         team2.playerName = "Jinna"
         
