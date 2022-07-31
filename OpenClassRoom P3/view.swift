@@ -13,7 +13,7 @@ class ViewTerminal {
     }
     
     func pressAKeyToContinue () {
-        print(printText.pressAkeyToContinue)
+        print(message.pressAkeyToContinue)
         if let _ = readLine() {
         }
     }

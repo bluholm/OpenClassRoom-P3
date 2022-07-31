@@ -9,7 +9,7 @@ public class Game {
     var isGameDone = false
     var debugMod = true
     var winner : String = ""
-    let numberOfTurns =  0
+    var numberOfTurns =  0
     let numberOfPlayer = 2
     
 
@@ -21,20 +21,20 @@ public class Game {
     }
     
     func setTeam1 () {
-        print("\(team1.playerName), \(printText.selectHero) ")
-        print (printText.presentCharacter)
+        print("\(team1.playerName), \(message.selectHero) ")
+        print (message.presentCharacter)
         team1.addAcharacterToMyTeam()
     }
     
     func setTeam2 () {
-        print("\(team2.playerName), \(printText.selectHero) ")
-        print(printText.presentCharacter)
+        print("\(team2.playerName), \(message.selectHero) ")
+        print(message.presentCharacter)
         team2.addAcharacterToMyTeam()
     }
     
     func showStatBeforeFight () {
         terminal.clearTerminal()
-        print(printText.reviewTheTeam)
+        print(message.reviewTheTeam)
         print(team1.playerName)
         team1.printMyTeam()
         print(team2.playerName)
@@ -45,19 +45,17 @@ public class Game {
     func startBattle () {
         var nextPlayer: Int = 1
         terminal.clearTerminal()
-        print(printText.fightBegin)
+        print(message.fightBegin)
         while team1.isDead() == false && team2.isDead() == false {
-            
-            
-            
+            numberOfTurns += 1
             if nextPlayer == 1 && !team1.isDead() {
                 nextPlayer = 2
                 print(" \(team1.playerName) it is your time to Attack !")
-                team1.teamAttackACharacter()
+                team1.realizeAnAction()
             } else {
                 nextPlayer = 1
                 print(" \(team2.playerName) it is your time to Attack !")
-                team2.teamAttackACharacter()
+                team2.realizeAnAction()
             }
         }
     }
@@ -67,10 +65,18 @@ public class Game {
     // les survivants
     // le premier mort
     // nombre de tours
-    func showWinner () { }
+    func showWinner () {
+        print(message.gameOver)
+        print("number of Turns : \(numberOfTurns)")
+        print(team1.playerName)
+        team1.printMyTeam()
+        print(team2.playerName)
+        team2.printMyTeam()
+        terminal.pressAKeyToContinue()
+    }
     
     init (){
-        print (printText.welcome)
+        print (message.welcome)
     }
 }
 

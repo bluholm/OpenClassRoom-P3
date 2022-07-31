@@ -19,7 +19,7 @@ class Team {
     
     
     func setName () {
-        print (printText.askNamePlayer  )
+        print (message.askNamePlayer  )
             if let name = readLine(strippingNewline: true) {
                 self.playerName = name
             }
@@ -74,7 +74,7 @@ class Team {
                 playerTeamLife.append(dwarf.characterMaxLifePoints)
                 playerTeamHeal.append(dwarf.characterHeal)
             default:
-                print (printText.defaultChooseCharacter  )
+                print (message.defaultChooseCharacter)
                 terminal.pressAKeyToContinue()
                 let random = Int.random(in: 1...3)
                 switch random {
@@ -119,7 +119,6 @@ class Team {
                     myTeam += " the \(team2.playerTeamType[i])"
                     myTeam += "  (\(team2.playerTeamLife[i]) PV)"
                     myTeam += "\n"
-                    
             }
             myTeam += "\n"
             print("\(myTeam)")
@@ -135,7 +134,6 @@ class Team {
                     myTeam += " the \(team1.playerTeamType[i])"
                     myTeam += "  (\(team1.playerTeamLife[i]) PV)"
                     myTeam += "\n"
-                    
             }
             myTeam += "\n"
             print("\(myTeam)")
@@ -156,13 +154,12 @@ class Team {
                 myTeam += " the \(playerTeamType[i])"
                 myTeam += "  (\(playerTeamLife[i]) PV)"
                 myTeam += "\n"
-                
         }
         print("\(myTeam)")
     }
     
     
-    func teamselectAnAttacker () -> Int {
+    func selectAttacker () -> Int {
         var KeepGoing = true
         var attacker = 0
         let rangeCharactereStillAlive = 1...playerTeamName.count
@@ -182,7 +179,7 @@ class Team {
     }
    
     
-    func teamselectTarget () -> Int {
+    func selectTarget () -> Int {
         var KeepGoing = true
         var target = 0
         var Life = 0
@@ -218,8 +215,30 @@ class Team {
     }
     
     
+    func selectHealer () -> Int {
+        var KeepGoing = true
+        var target = 0
+        var Life = 0
+        let rangeCharactereStillAlive = 1...self.playerTeamName.count
+        
+        while KeepGoing == true {
+            print ("")
+            if let choice = readLine(){
+                Life = self.playerTeamLife[Int(choice)!-1]
+                
+                if Life > 0 && Int(choice) != nil && choice != "" && rangeCharactereStillAlive.contains(Int(choice)!){
+                    target = Int(choice)!
+                        KeepGoing = false
+                }else{
+                    print ("wrong choice")
+                }
+            }
+        }
+        return target
+    }
+    
+    
     func Attack (attacker: Int, target: Int){
-        print("Une attaque massive de \(playerTeamName[attacker-1]) a eu lieu ! il était \(playerTeamType[attacker-1]) !")
         var damage: Int = 0
         if playerTeamType[attacker-1] == "magus" {
             damage = wand.weaponDamage
@@ -232,7 +251,7 @@ class Team {
         }
         if playerTeamNumber == 1 {
             team2.playerTeamLife[target-1] -= damage
-            print(" nombre de damage infligé= \(damage) à \(team2.playerTeamName[target-1]) ")
+            print("\(damage) to \(team2.playerTeamName[target-1]) ")
             if team2.playerTeamLife[target-1] < 0 {
                 team2.playerTeamLife[target-1] = 0
                
@@ -242,27 +261,72 @@ class Team {
             if team1.playerTeamLife[target-1] <= 0 {
                 team1.playerTeamLife[target-1] = 0
             }
-            print(" nombre de damage infligé= \(damage) à \(team1.playerTeamName[target-1]) ")
+            print("\(damage) to \(team1.playerTeamName[target-1]) ")
         }
         
     }
     
-    // 📌 les soins ?!
-    func teamAttackACharacter () {
+    
+    func Heal (healer: Int, target: Int){
+        print("\(playerTeamName[healer-1]) healed \(playerTeamName[target-1]) !")
+        var healpts: Int = 0
+        healpts = wand.weaponDamage
+        self.playerTeamLife[target-1] += healpts
+    }
+    
+    
+    func wouldYouLikeToHeal () -> String{
+        var answer: String = ""
+        print("would you like to heal ? (Y or N) ")
+        while answer == "" {
+            if let wouldYouLikeToHeal = readLine() {
+                switch wouldYouLikeToHeal {
+                    case "Y" :
+                        answer = "Y"
+                    case "N" :
+                        answer = "N"
+                    default :
+                        print("wrong choice")
+                }
+            }
+        }
+        return answer
+    }
+    
+    
+    func realizeAnAction () {
+        
         //1- Select an attacker
         self.printMyTeam()
         print("Select a fighter:")
-        let teamAttacker = teamselectAnAttacker()
+        let teamAttacker = selectAttacker()
         
-        //2- Select an target
-        self.printMyOpponentTeam()
-        print("Select a target:")
-        let teamOpponent = teamselectTarget()
-        
-        //3- Attack
-        self.Attack(attacker: teamAttacker, target: teamOpponent)
-        
-        
+        //2- Test Si veut soigner
+        if playerTeamHeal[teamAttacker-1] == true {
+            
+            if self.wouldYouLikeToHeal() == "Y"{
+                
+                self.printMyTeam()
+                print("Select someone to heal :")
+                let teamHeal = selectHealer()
+                self.Heal(healer: teamAttacker, target: teamHeal)
+                
+            } else {
+                
+                self.printMyOpponentTeam()
+                print("Select a target:")
+                let teamOpponent = selectTarget()
+                self.Attack(attacker: teamAttacker, target: teamOpponent)
+            }
+            
+        } else {
+            
+            self.printMyOpponentTeam()
+            print("Select a target:")
+            let teamOpponent = selectTarget()
+            self.Attack(attacker: teamAttacker, target: teamOpponent)
+        }
+ 
     }
     
     

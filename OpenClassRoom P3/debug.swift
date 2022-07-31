@@ -4,6 +4,7 @@
 //
 //  Created by Marc-Antoine BAR on 2022-07-29.
 //
+/// cette Classe va servir pour debug justement
 
 
 class Debug {
@@ -12,9 +13,7 @@ class Debug {
     var playerTeamType : [String] = []
     var playerTeamHeal : [Bool] = []
 
-    //var playerName: String = "NoName"
-    
-    
+    ///function to determine how come view
     
     func debugSetTeams(){
         team1.playerName = "Paul"
