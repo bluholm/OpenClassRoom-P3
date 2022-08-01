@@ -36,4 +36,4 @@ morts.
 Les armes : 
  - Epée : entre 30-40 degats  
  - Baguette : entre 10-20 dégats ( 50 en soins) 
-   Hache : entre 40-70 dégats
+ - Hache : entre 40-70 dégats
