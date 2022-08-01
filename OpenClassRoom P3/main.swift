@@ -6,7 +6,6 @@
 //
 
 
-
 terminal.clearTerminal()
 
 if newGame.debugMod == true {
@@ -18,3 +17,10 @@ if newGame.debugMod == true {
 newGame.showStatBeforeFight()
 newGame.startBattle()
 newGame.showWinner()
+
+
+//Documentation
+//check all function
+//check optimisation
+//debug : generate a fake team + fake names
+//renommer certaines variables.

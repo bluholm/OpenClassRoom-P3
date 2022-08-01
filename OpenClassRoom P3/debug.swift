@@ -8,13 +8,7 @@
 
 
 class Debug {
-    var playerTeamName : [String] = []
-    var playerTeamLife : [Int] = []
-    var playerTeamType : [String] = []
-    var playerTeamHeal : [Bool] = []
 
-    ///function to determine how come view
-    
     func debugSetTeams(){
         team1.playerName = "Paul"
         

@@ -11,8 +11,8 @@ class Team {
     var playerTeamType : [String] = []
     var playerTeamHeal : [Bool] = []
     var playerTeamNumber : Int
-    var charactereName: String = "" //📌a voir si utile ou non
-    var playerName: String = "NoName" //📌a noname ? ou declaration autrement init ?!
+    var charactereName: String = "" 
+    var playerName: String = "NoName"
     let numberMaxOfHerosPerTeam = 3
     
     

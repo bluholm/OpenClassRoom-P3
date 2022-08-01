@@ -69,9 +69,8 @@
 		0E10BB8D2891B22300C86F10 = {
 			isa = PBXGroup;
 			children = (
-				0E681A0B2894CA4C0092345E /* debug.swift */,
-				0E10BBAE2891C01400C86F10 /* ressources */,
 				0E10BB992891B22300C86F10 /* main.swift */,
+				0E10BBAE2891C01400C86F10 /* ressources */,
 				0E10BBAB2891B5AF00C86F10 /* weapons */,
 				0E10BBAA2891B59B00C86F10 /* character */,
 				0E10BBA62891B46800C86F10 /* character.swift */,
@@ -79,6 +78,7 @@
 				0E10BBA22891B41300C86F10 /* team.swift */,
 				0E10BBA82891B47100C86F10 /* weapon.swift */,
 				0E10BBB32891C29A00C86F10 /* view.swift */,
+				0E681A0B2894CA4C0092345E /* debug.swift */,
 				0E10BBB72891C3D700C86F10 /* messages.swift */,
 				0E10BB972891B22300C86F10 /* Products */,
 			);

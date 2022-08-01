@@ -6,8 +6,8 @@
 //
 
 class Weapon {
-    var weaponName: String = ""
-    var weaponDamage: Int = 0
+    var weaponName: String
+    var weaponDamage: Int
     
     init (weaponName: String, weaponDamage: Int){
         self.weaponName = weaponName
@@ -15,6 +15,3 @@ class Weapon {
     }
 }
 
-var sword = Weapon(weaponName: "sword", weaponDamage:20)
-var axe = Weapon(weaponName: "axe", weaponDamage:80)
-var wand = Weapon(weaponName: "wand", weaponDamage:30)
