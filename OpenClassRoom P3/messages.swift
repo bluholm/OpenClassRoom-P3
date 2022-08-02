@@ -5,7 +5,7 @@
 //  Created by Marc-Antoine BAR on 2022-07-27.
 //
 
-
+///PrintText is a class who take all of the recurrents message needed in the programs . 
 class PrintText {
     
     var askNamePlayer = "What's your name PLAYER ?! "

@@ -20,7 +20,3 @@ newGame.showWinner()
 
 
 //Documentation
-//check all function
-//check optimisation
-//debug : generate a fake team + fake names
-//renommer certaines variables.

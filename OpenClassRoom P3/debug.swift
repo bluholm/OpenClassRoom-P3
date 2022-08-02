@@ -4,11 +4,12 @@
 //
 //  Created by Marc-Antoine BAR on 2022-07-29.
 //
-/// cette Classe va servir pour debug justement
 
 
+/// Class usefull to bypass the creating phase (a bit long)
 class Debug {
-
+    
+    /// function who generate 2 players ; names and ready to fight 
     func debugSetTeams(){
         team1.playerName = "Paul"
         
@@ -25,7 +26,6 @@ class Debug {
         team1.playerTeamName.append("Albert")
         team1.playerTeamType.append(dwarf.characterType)
         team1.playerTeamLife.append(dwarf.characterMaxLifePoints)
-        team1.playerTeamLife.append(0)
         team1.playerTeamHeal.append(dwarf.characterHeal)
         
         team2.playerName = "Jinna"

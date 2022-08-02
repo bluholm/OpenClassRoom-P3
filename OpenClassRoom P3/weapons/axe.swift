@@ -11,7 +11,7 @@ class Axe: Weapon {
     
     init () {
     let weaponName = "axe"
-    let weaponDamage = 50
+        let weaponDamage = Int.random(in: 40...70)
         super.init(weaponName: weaponName, weaponDamage: weaponDamage)
     }
 }

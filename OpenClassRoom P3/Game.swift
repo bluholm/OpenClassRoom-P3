@@ -5,21 +5,29 @@
 //  Created by Marc-Antoine BAR on 2022-07-27.
 //
 
+/// Class who manage the game
 public class Game {
-    var isGameDone = false
-    var debugMod = true
+    /// if true = debug mod is active . please change to false to run the program
+    var debugMod = false
+    
+    ///name of the winner
     var winner : String = ""
-    var numberOfTurns =  0
+    
+    /// how many player will play ( game is configure to run exactly 2 players
     let numberOfPlayer = 2
     
-
+    var numberOfTurns =  0
+    var bestHeal: Int = 0
+    var bestAttack: Int = 0
+    var firstPlayerDead: String = ""
+    
     func startGame () {
         team1.setName ()
         team2.setName ()
         self.setTeam1()
         self.setTeam2()
     }
-    
+     
     func setTeam1 () {
         print("\(team1.playerName), \(message.selectHero) ")
         print (message.presentCharacter)
@@ -42,6 +50,7 @@ public class Game {
         terminal.pressAKeyToContinue()
     }
 
+    ///start Battle do the alternate choice of each player ; it also incremente the numberOfTurns
     func startBattle () {
         var nextPlayer: Int = 1
         terminal.clearTerminal()
@@ -59,15 +68,14 @@ public class Game {
             }
         }
     }
-    // 📌 a dev showWinner
-    // meilleur cou porté !
-    // meilleur soin porté
-    // les survivants
-    // le premier mort
-    // nombre de tours
+    
     func showWinner () {
         print(message.gameOver)
-        print("number of Turns : \(numberOfTurns)")
+        print("number of turns : \(numberOfTurns) \n")
+        print("best Attack : \(bestAttack) \n")
+        print("best heal : \(bestHeal) \n")
+        print("first player dead : \(bestHeal) \n")
+        
         print(team1.playerName)
         team1.printMyTeam()
         print(team2.playerName)

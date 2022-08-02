@@ -9,6 +9,7 @@ class Weapon {
     var weaponName: String
     var weaponDamage: Int
     
+    
     init (weaponName: String, weaponDamage: Int){
         self.weaponName = weaponName
         self.weaponDamage = weaponDamage
