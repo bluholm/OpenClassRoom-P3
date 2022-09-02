@@ -6,8 +6,7 @@
 //
 
 class Magus: TypeOfCharacter {
-    
-    
+
     init () {
         let characterType = "magus"
         let characterMaxLifePoints = 70

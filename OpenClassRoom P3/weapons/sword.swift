@@ -5,9 +5,9 @@
 //  Created by Marc-Antoine BAR on 2022-07-27.
 //
 
-///Class sword who is depending of weapon
+/// Class sword who is depending of weapon
 class Sword: Weapon {
-    
+
     init () {
     let weaponName = "sword"
         let weaponDamage = Int.random(in: 30...40)
@@ -16,5 +16,3 @@ class Sword: Weapon {
 }
 
 var sword = Sword()
-
-
