@@ -141,8 +141,8 @@ class Team {
         let rangeCharactereStillAlive = 1...playerTeamName.count
         while keepGoing == true {
             if let choice = readLine() {
-                print(" ")
-                if self.playerTeamLife[Int(choice)!-1]>0 &&  Int(choice) != nil && choice != "" && rangeCharactereStillAlive.contains(Int(choice)!) {
+                print(" range:\(rangeCharactereStillAlive)")
+                if self.playerTeamLife[Int(choice)!-1]>0 &&  Int(choice) != nil && choice != ""  && rangeCharactereStillAlive.contains(Int(choice)!) {
                         attacker = Int(choice)!
                         keepGoing = false
                 } else {

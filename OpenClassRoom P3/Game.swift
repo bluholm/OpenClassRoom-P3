@@ -10,9 +10,9 @@
 public class Game {
     
     /// if true = debug mod is active . please change to false to run the program
-    var debugMod = false
+    var debugMod = true
     ///name of the winner
-    var winner : String = ""
+    var winner: String = ""
     /// how many player will play ( game is configure to run exactly 2 players
     let numberOfPlayer = 2
     var numberOfTurns =  0
@@ -66,8 +66,7 @@ public class Game {
         print(message.gameOver)
         print("number of turns : \(numberOfTurns) \n")
         print("best Attack : \(bestAttack) \n")
-        print("best heal : \(bestHeal) \n")
-        print("first player dead : \(bestHeal) \n")
+        print("best heal : \(bestHeal) \n")        
         
         print(team1.playerName)
         team1.printMyTeam()
