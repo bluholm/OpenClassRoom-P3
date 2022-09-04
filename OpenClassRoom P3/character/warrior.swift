@@ -10,7 +10,10 @@ class Warrior: TypeOfCharacter {
         let characterMaxLifePoints = 150
         let characterHeal = false
         let characterWeapon = "sword"
-        super.init(characterType: characterType, characterMaxLifePoints: characterMaxLifePoints, characterHeal: characterHeal, characterWeapon: characterWeapon)
+        super.init(characterType: characterType,
+                   characterMaxLifePoints: characterMaxLifePoints,
+                   characterHeal: characterHeal,
+                   characterWeapon: characterWeapon)
     }
 }
 

@@ -11,7 +11,10 @@ class Dwarf: TypeOfCharacter {
         let characterMaxLifePoints = 100
         let characterHeal = false
         let characterWeapon = "axe"
-        super.init(characterType: characterType, characterMaxLifePoints: characterMaxLifePoints, characterHeal: characterHeal, characterWeapon: characterWeapon)
+        super.init(characterType: characterType,
+                   characterMaxLifePoints: characterMaxLifePoints,
+                   characterHeal: characterHeal,
+                   characterWeapon: characterWeapon)
     }
 }
 

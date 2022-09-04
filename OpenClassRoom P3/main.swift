@@ -17,6 +17,3 @@ if newGame.debugMod == true {
 newGame.showStatBeforeFight()
 newGame.startBattle()
 newGame.showWinner()
-
-
-//Documentation

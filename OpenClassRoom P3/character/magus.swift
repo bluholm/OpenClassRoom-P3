@@ -6,14 +6,15 @@
 //
 
 class Magus: TypeOfCharacter {
-    
-    
     init () {
         let characterType = "magus"
         let characterMaxLifePoints = 70
         let characterHeal = true
         let characterWeapon = "wand"
-        super.init(characterType: characterType, characterMaxLifePoints: characterMaxLifePoints, characterHeal: characterHeal, characterWeapon: characterWeapon)
+        super.init(characterType: characterType,
+                   characterMaxLifePoints: characterMaxLifePoints,
+                   characterHeal: characterHeal,
+                   characterWeapon: characterWeapon)
     }
 }
 
