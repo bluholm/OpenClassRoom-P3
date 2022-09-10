@@ -10,7 +10,7 @@
 public class Game {
     
     /// if true = debug mod is active . please change to false to run the program
-    var debugMod = false
+    var debugMod = true
     ///name of the winner
     var winner: String = ""
     /// how many player will play ( game is configure to run exactly 2 players
@@ -59,6 +59,7 @@ public class Game {
     }
     func showWinner () {
         print(message.gameOver)
+        print("Good Game !Winner is  \(whoIsTheWinner().playerName) ")
         print("number of turns : \(numberOfTurns) \n")
         print("best Attack : \(bestAttack) \n")
         print("best heal : \(bestHeal) \n")        
@@ -69,7 +70,15 @@ public class Game {
         team2.printTeam()
         terminal.pressAKeyToContinue()
     }
+              
     
+    func whoIsTheWinner () -> Team{
+        if team1.isDead(){
+            return team2
+        } else {
+            return team1
+        }
+    }
     
     
     /// Attack make the attack true and calculate
