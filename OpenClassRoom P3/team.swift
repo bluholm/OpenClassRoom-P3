@@ -141,12 +141,20 @@ class Team {
         let rangeCharactereStillAlive = 1...playerTeamName.count
         while keepGoing == true {
             if let choice = readLine() {
-                print(" range:\(rangeCharactereStillAlive)")
-                if self.playerTeamLife[Int(choice)!-1]>0 &&  Int(choice) != nil && choice != ""  && rangeCharactereStillAlive.contains(Int(choice)!) {
-                        attacker = Int(choice)!
-                        keepGoing = false
+                // &&  Int(choice) != nil && choice != ""  && rangeCharactereStillAlive.contains(Int(choice)!)
+                if Int(choice) == nil || choice == "" {
+                    print("wrong choice cannot be empty")
                 } else {
-                    print("wrong choice")
+                    if !rangeCharactereStillAlive.contains(Int(choice)!) {
+                        print("wrong choice not in interval")
+                    } else {
+                        if self.playerTeamLife[Int(choice)!-1]<=0 {
+                            print("wrong choice cannot be a ded people")
+                        } else {
+                            attacker = Int(choice)!
+                            keepGoing = false
+                        }
+                    }
                 }
             }
         }
@@ -164,7 +172,6 @@ class Team {
             rangeCharactereStillAlive = 1...team1.playerTeamName.count
         }
         while keepGoing == true {
-            print("")
             if let choice = readLine() {
                 if playerTeamNumber == 1 {
                     rangeCharactereStillAlive = 1...team2.playerTeamName.count

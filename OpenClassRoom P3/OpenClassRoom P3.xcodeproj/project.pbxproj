@@ -53,6 +53,7 @@
 		0E10BBBF2891C57E00C86F10 /* wand.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = wand.swift; sourceTree = "<group>"; };
 		0E10BBC12891C58500C86F10 /* axe.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = axe.swift; sourceTree = "<group>"; };
 		0E681A0B2894CA4C0092345E /* debug.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = debug.swift; sourceTree = "<group>"; };
+		0EDF1CBF28CC1FAA00B8BC82 /* Remote work.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = "Remote work.pdf"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -115,6 +116,7 @@
 		0E10BBAE2891C01400C86F10 /* ressources */ = {
 			isa = PBXGroup;
 			children = (
+				0EDF1CBF28CC1FAA00B8BC82 /* Remote work.pdf */,
 				0E10BBB22891C26A00C86F10 /* Guide pour le stagiaire.pdf */,
 				0E10BBAF2891C25900C86F10 /* Etapes clés - Créez votre premier jeu vidéo avec Swift ! - FINAL.pdf */,
 			);

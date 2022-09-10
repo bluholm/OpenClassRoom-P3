@@ -10,7 +10,7 @@
 public class Game {
     
     /// if true = debug mod is active . please change to false to run the program
-    var debugMod = false
+    var debugMod = true
     ///name of the winner
     var winner: String = ""
     /// how many player will play ( game is configure to run exactly 2 players

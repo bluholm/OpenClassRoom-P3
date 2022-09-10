@@ -10,8 +10,8 @@
 class Sword: Weapon {
     init () {
     let weaponName = "sword"
-        let weaponDamage = Int.random(in: 30...40)
-        super.init(weaponName: weaponName, weaponDamage: weaponDamage)
+    let weaponDamage = Int.random(in: 30...40)
+    super.init(weaponName: weaponName, weaponDamage: weaponDamage)
     }
 }
 
