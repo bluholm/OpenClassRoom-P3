@@ -48,12 +48,14 @@ class Team {
         }
     }
     /// check unicity of each name in the game ( using a loop to check all teams)
-    func checkNameCharacter () {
+    func checkNameCharacter (firstTeam: Team, secondTeam: Team) {
         print("Please Enter a name for your Hero ?")
         var isNameUnique = true
         while isNameUnique == true {
             if let pname = readLine() {
-                if team1.playerTeamName.contains(pname) || team2.playerTeamName.contains(pname) || pname == "" {
+                if firstTeam.playerTeamName.contains(pname) ||
+                    secondTeam.playerTeamName.contains(pname) ||
+                    pname == "" {
                     print("name already exist or is empty  : please change ")
                 } else {
                     charactereName = pname
@@ -104,32 +106,18 @@ class Team {
             }
         }
     }
-    func addAcharacterToMyTeam () {
-        for _ in 1...self.numberMaxOfHerosPerTeam {
-            self.checkNameCharacter()
-            self.appendAcharacterToMyTeam()
-            }
-        }
-    /// print in terminal the opponent team
-    func printMyOpponentTeam () {
-        if playerTeamNumber == 1 {
-            team2.printMyTeam()
-        } else {
-            team1.printMyTeam()
-        }
-    }
      /// print in the terminal my team
-    func printMyTeam () {
+    func printTeam () {
         var myTeam: String = ""
-        for number in 0..<playerTeamName.count {
-            if playerTeamLife[number] > 0 {
+        for number in 0..<self.playerTeamName.count {
+            if self.playerTeamLife[number] > 0 {
                 myTeam += "[\(number+1)] "
             } else {
                 myTeam += "[D] "
             }
-                myTeam += playerTeamName[number]
-                myTeam += " the \(playerTeamType[number])"
-                myTeam += "  (\(playerTeamLife[number]) PV)"
+            myTeam += self.playerTeamName[number]
+            myTeam += " the \(self.playerTeamType[number])"
+            myTeam += "  (\(self.playerTeamLife[number]) PV)"
                 myTeam += "\n"
         }
         print("\(myTeam)")
@@ -141,7 +129,6 @@ class Team {
         let rangeCharactereStillAlive = 1...playerTeamName.count
         while keepGoing == true {
             if let choice = readLine() {
-                // &&  Int(choice) != nil && choice != ""  && rangeCharactereStillAlive.contains(Int(choice)!)
                 if Int(choice) == nil || choice == "" {
                     print("wrong choice cannot be empty")
                 } else {
@@ -161,30 +148,27 @@ class Team {
         return attacker
     }
     /// ask to select a Target and check the alive people !
-    func selectTarget() -> Int {
+    func selectTarget(targetTeam: Team) -> Int {
         var keepGoing = true
         var target = 0
         var life = 0
-        var rangeCharactereStillAlive = 1...1
-        if playerTeamNumber == 1 {
-            rangeCharactereStillAlive = 1...team2.playerTeamName.count
-        } else {
-            rangeCharactereStillAlive = 1...team1.playerTeamName.count
-        }
+        let rangeCharactereStillAlive = 1...targetTeam.playerTeamName.count
         while keepGoing == true {
             if let choice = readLine() {
-                if playerTeamNumber == 1 {
-                    rangeCharactereStillAlive = 1...team2.playerTeamName.count
-                    life = team2.playerTeamLife[Int(choice)!-1]
+                if Int(choice) == nil || choice == "" {
+                    print("wrong choice cannot be empty")
                 } else {
-                    rangeCharactereStillAlive = 1...team1.playerTeamName.count
-                    life = team1.playerTeamLife[Int(choice)!-1]
-                }
-                if life > 0 && Int(choice) != nil && choice != "" && rangeCharactereStillAlive.contains(Int(choice)!) {
-                    target = Int(choice)!
-                        keepGoing = false
-                } else {
-                    print("wrong choice")
+                    if !rangeCharactereStillAlive.contains(Int(choice)!) {
+                        print("wrong choice")
+                    } else {
+                        life = targetTeam.playerTeamLife[Int(choice)!-1]
+                        if life <= 0 {
+                            print("wrong choice : character is dead ! ")
+                        } else {
+                            target = Int(choice)!
+                            keepGoing = false
+                        }
+                    }
                 }
             }
         }
@@ -210,99 +194,7 @@ class Team {
         }
         return target
     }
-    /// Attack make the attack true and calculate
-    func attack (attacker: Int, target: Int) {
-        var damage: Int = 0
-        if playerTeamType[attacker-1] == "magus" {
-            damage = wand.weaponDamage
-        } else if playerTeamType[attacker-1] == "warrior" {
-            damage = sword.weaponDamage
-        } else if playerTeamType[attacker-1] == "dwarf" {
-            damage = axe.weaponDamage
-        }
-        if playerTeamNumber == 1 {
-            team2.playerTeamLife[target-1] -= damage
-            print("\(damage)PV to \(team2.playerTeamName[target-1]) ")
-            if team2.playerTeamLife[target-1] < 0 {
-                team2.playerTeamLife[target-1] = 0
-                if newGame.firstPlayerDead != "" {
-                    newGame.firstPlayerDead = team2.playerTeamName[target-1]
-                }
-            }
-        } else {
-            team1.playerTeamLife[target-1] -= damage
-            if team1.playerTeamLife[target-1] <= 0 {
-                team1.playerTeamLife[target-1] = 0
-                if newGame.firstPlayerDead != "" {
-                    newGame.firstPlayerDead = team2.playerTeamName[target-1]
-                }
-            }
-            print("\(damage) to \(team1.playerTeamName[target-1]) ")
-            if damage > newGame.bestAttack {
-                newGame.bestAttack = damage
-            }
-        }
-    }
-    /// add heal point to the target
-    /// - Parameters:
-    /// - healer : number of the table .
-    /// - target : number of the taarget
-    func heal (healer: Int, target: Int) {
-        let healpts: Int = wand.weaponHeal
-        print("\(playerTeamName[healer-1])PV healed \(playerTeamName[target-1]) with \(healpts)PV !")
-        self.playerTeamLife[target-1] += healpts
-        if healpts>newGame.bestHeal {
-            newGame.bestHeal = healpts
-        }
-    }
-    // Ask if want to heal ? only for the healer ; return Y or N
-    func wouldYouLikeToHeal () -> String {
-        var answer: String = ""
-        print("would you like to heal ? (Y or N) ")
-        while answer == "" {
-            if let wouldYouLikeToHeal = readLine() {
-                switch wouldYouLikeToHeal {
-                case "Y":
-                        answer = "Y"
-                case "N":
-                        answer = "N"
-                default:
-                        print("wrong choice")
-                }
-            }
-        }
-        return answer
-    }
-    // Final function of realising 1 action
-    func realizeAnAction () {
-        // 1- Select an attacker
-        self.printMyTeam()
-        print("Select a fighter:")
-        let teamAttacker = selectAttacker()
-        // 2- Test Si veut soigner
-        if playerTeamHeal[teamAttacker-1] == true {
-            if self.wouldYouLikeToHeal() == "Y" {
-                self.printMyTeam()
-                print("Select someone to heal :")
-                let teamHeal = selectHealer()
-                self.heal(healer: teamAttacker, target: teamHeal)
-            } else {
-                self.printMyOpponentTeam()
-                print("Select a target:")
-                let teamOpponent = selectTarget()
-                self.attack(attacker: teamAttacker, target: teamOpponent)
-            }
-        } else {
-            self.printMyOpponentTeam()
-            print("Select a target:")
-            let teamOpponent = selectTarget()
-            self.attack(attacker: teamAttacker, target: teamOpponent)
-        }
-    }
     init(playerTeamNumber: Int) {
         self.playerTeamNumber = playerTeamNumber
     }
 }
-
-var team1 = Team(playerTeamNumber: 1)
-var team2 = Team(playerTeamNumber: 2)

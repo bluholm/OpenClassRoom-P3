@@ -8,33 +8,33 @@
 /// Class usefull to bypass the creating phase (a bit long)
 class Debug {
     /// function who generate 2 players ; names and ready to fight 
-    func debugSetTeams() {
-        team1.playerName = "Paul"
-        team1.playerTeamName.append("Bob")
-        team1.playerTeamType.append(warrior.characterType)
-        team1.playerTeamLife.append(warrior.characterMaxLifePoints)
-        team1.playerTeamHeal.append(warrior.characterHeal)
-        team1.playerTeamName.append("Henri")
-        team1.playerTeamType.append(magus.characterType)
-        team1.playerTeamLife.append(magus.characterMaxLifePoints)
-        team1.playerTeamHeal.append(magus.characterHeal)
-        team1.playerTeamName.append("Albert")
-        team1.playerTeamType.append(dwarf.characterType)
-        team1.playerTeamLife.append(dwarf.characterMaxLifePoints)
-        team1.playerTeamHeal.append(dwarf.characterHeal)
-        team2.playerName = "Jinna"
-        team2.playerTeamName.append("Sarah")
-        team2.playerTeamType.append(magus.characterType)
-        team2.playerTeamLife.append(magus.characterMaxLifePoints)
-        team2.playerTeamHeal.append(magus.characterHeal)
-        team2.playerTeamName.append("Flora")
-        team2.playerTeamType.append(warrior.characterType)
-        team2.playerTeamLife.append(warrior.characterMaxLifePoints)
-        team2.playerTeamHeal.append(warrior.characterHeal)
-        team2.playerTeamName.append("tatiana")
-        team2.playerTeamType.append(dwarf.characterType)
-        team2.playerTeamLife.append(dwarf.characterMaxLifePoints)
-        team2.playerTeamHeal.append(dwarf.characterHeal)
+    func debugSetTeams(firstTeam: Team, secondTeam: Team) {
+        firstTeam.playerName = "Paul"
+        firstTeam.playerTeamName.append("Bob")
+        firstTeam.playerTeamType.append(warrior.characterType)
+        firstTeam.playerTeamLife.append(warrior.characterMaxLifePoints)
+        firstTeam.playerTeamHeal.append(warrior.characterHeal)
+        firstTeam.playerTeamName.append("Henri")
+        firstTeam.playerTeamType.append(magus.characterType)
+        firstTeam.playerTeamLife.append(magus.characterMaxLifePoints)
+        firstTeam.playerTeamHeal.append(magus.characterHeal)
+        firstTeam.playerTeamName.append("Albert")
+        firstTeam.playerTeamType.append(dwarf.characterType)
+        firstTeam.playerTeamLife.append(dwarf.characterMaxLifePoints)
+        firstTeam.playerTeamHeal.append(dwarf.characterHeal)
+        secondTeam.playerName = "Jinna"
+        secondTeam.playerTeamName.append("Sarah")
+        secondTeam.playerTeamType.append(magus.characterType)
+        secondTeam.playerTeamLife.append(magus.characterMaxLifePoints)
+        secondTeam.playerTeamHeal.append(magus.characterHeal)
+        secondTeam.playerTeamName.append("Flora")
+        secondTeam.playerTeamType.append(warrior.characterType)
+        secondTeam.playerTeamLife.append(warrior.characterMaxLifePoints)
+        secondTeam.playerTeamHeal.append(warrior.characterHeal)
+        secondTeam.playerTeamName.append("tatiana")
+        secondTeam.playerTeamType.append(dwarf.characterType)
+        secondTeam.playerTeamLife.append(dwarf.characterMaxLifePoints)
+        secondTeam.playerTeamHeal.append(dwarf.characterHeal)
     }
 }
 
